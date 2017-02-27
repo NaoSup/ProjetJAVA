@@ -13,50 +13,59 @@ public class Main {
 			System.out.println("Le nombre saisi n'est pas compris entre 1 et 20");
 		}
 		else {
-			//permet au joueur de saisir des nombres
-			Scanner saisie2 = new Scanner(System.in);
-			System.out.println("Veuillez saisir un nombre :");
-			int nombreSaisi = saisie2.nextInt();
+			//choix du mode
+			Scanner scmode = new Scanner(System.in);
+			System.out.println("Voulez-vous jouer en mode illimité ou limité ?");
+			String mode = scmode.nextLine();
 			
-			//Comptage du nombre de tentatives
-			int tentative = 1;
-			
-			
-			while (nombreSaisi != nombreMagique) {
+			//mode de jeu illimité
+			if (mode == "illimité") {
+				//permet au joueur de saisir des nombres
+				Scanner saisie2 = new Scanner(System.in);
+				System.out.println("Veuillez saisir un nombre :");
+				int nombreSaisi = saisie2.nextInt();
 				
-				//si nombre saisi plus grand que nombre magique
-				if (nombreSaisi > nombreMagique) {
-					
-					//affichage "plus petit"
-					System.out.println("Plus petit");
-					
-					//saisie d'un nouveau nombre 
-					Scanner sc = new Scanner(System.in);
-					System.out.println("Veuillez saisir un nouveau nombre :");
-					nombreSaisi = sc.nextInt();
-					
-					tentative = tentative+1;
-				}
+				//Comptage du nombre de tentatives
+				int tentative = 1;
 				
-				//si nombre saisi plus petit que nombre magique
-				else if (nombreSaisi < nombreMagique) {
+				
+				while (nombreSaisi != nombreMagique) {
 					
-					//affichage "plus grand"
-					System.out.println("Plus grand");
+					//si nombre saisi plus grand que nombre magique
+					if (nombreSaisi > nombreMagique) {
+						
+						//affichage "plus petit"
+						System.out.println("Plus petit");
+						
+						//saisie d'un nouveau nombre 
+						Scanner sc = new Scanner(System.in);
+						System.out.println("Veuillez saisir un nouveau nombre :");
+						nombreSaisi = sc.nextInt();
+						
+						tentative = tentative+1;
+					}
 					
-					//saisie d'un nouveau nombre
-					Scanner sc = new Scanner(System.in);
-					System.out.println("Veuillez saisir un nouveau nombre :");
-					nombreSaisi = sc.nextInt();
-					
-					tentative = tentative+1;
-				}
+					//si nombre saisi plus petit que nombre magique
+					else if (nombreSaisi < nombreMagique) {
+						
+						//affichage "plus grand"
+						System.out.println("Plus grand");
+						
+						//saisie d'un nouveau nombre
+						Scanner sc = new Scanner(System.in);
+						System.out.println("Veuillez saisir un nouveau nombre :");
+						nombreSaisi = sc.nextInt();
+						
+						tentative = tentative+1;
+					}
 
-			}
-			
-			System.out.println("Vous avez trouvez le nombre magique !!! :)");
-			System.out.println("Le nombre magique est " + nombreMagique); //affichage nombre magique
-			System.out.println("Nombre de tentatives : " + tentative); //affichage nombre tentative
-		}
-	}	
-}
+				} //fin while
+				
+				System.out.println("Vous avez trouvez le nombre magique !!! :)");
+				System.out.println("Le nombre magique est " + nombreMagique); //affichage nombre magique
+				System.out.println("Nombre de tentatives : " + tentative); //affichage nombre tentative
+				
+			} //fin if mode illimité
+		} //fin else	
+	} //fin fonction MAIN	
+} //fin class MAIN
