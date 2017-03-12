@@ -4,6 +4,10 @@ import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
+		
+		FenetreAccueil fenetre = new FenetreAccueil();
+		fenetre.setVisible(true);
+		
 		//Choix du jeu (mot magique ou nombre magique)
 		Scanner saisie = new Scanner(System.in);
 		System.out.println("Nombre magique : 1 / Mot magique : 2");
