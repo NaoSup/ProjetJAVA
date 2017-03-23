@@ -5,8 +5,9 @@ import java.awt.Color;
 import java.awt.Container; 
 import java.awt.FlowLayout; 
 import java.awt.event.ActionEvent; 
-import java.awt.event.ActionListener; 
- 
+import java.awt.event.ActionListener;
+import java.util.Scanner;
+
 import javax.swing.JFrame; 
 import javax.swing.JLabel; 
 import javax.swing.JOptionPane; 
@@ -17,45 +18,48 @@ public class NombreMagique extends JFrame implements ActionListener
 	//??
    private static final long serialVersionUID = 1L; 
 
-   private int nombreSaisi = 0; 
-   private int nombreMagique = 0; 
-   private int tentatives; 
+   private int nombreSaisi; 
+   private int nombreMagique; 
+   private int tentative; 
    private int tentativesMax = 10;
-   private int tentativesRest = tentativesMax - tentatives;
+   private int tentativesRest = tentativesMax - tentative;
    private int limiteRand = 501;
-   private int limiteJeu = limiteRand - 1;
+   private int limiteJeu = limiteRand-1;
    private boolean saisieValide = false; 
    
    private JLabel regle; 
-   private JTextField fieldNombre; 
+   private JTextField caseNombreSaisi; 
    private JLabel labelEtat; 
- 
- 
-   public NombreMagique() 
-   {  
+   
+	public int choixNombreMagique() {
+		this.nombreMagique = (int) (Math.random()*this.limiteRand);
+		return this.nombreMagique;
+	}
+   
+   public NombreMagique() {  
       super(); 
- 
+      
       // Obtenir le panneau de contenu et changer son layout en un FlowLayout. 
       Container panel = getContentPane(); 
       panel.setLayout(new FlowLayout()); 
       panel.setBackground(Color.white);
- 
+      
       // Créer l'étiquette et le champ texte du nombre à deviner. 
-      this.regle = new JLabel("Devinez le nombre qui est compris entre 0 et " + limiteJeu + ". " + "Pour cela, vous avez droit à " + tentativesMax + " tentatives."); 
+      this.regle = new JLabel("Devinez le nombre qui est compris entre 0 et " + this.limiteJeu + ". " + "Pour cela, vous avez droit à " + this.tentativesMax + " tentatives."); 
       panel.add(this.regle); 
       
-      this.fieldNombre = new JTextField(4); 
-      this.fieldNombre.setEditable(true); 
-      panel.add(this.fieldNombre); 
-      this.fieldNombre.addActionListener(this); 
+      this.caseNombreSaisi = new JTextField(4); 
+      this.caseNombreSaisi.setEditable(true); 
+      panel.add(this.caseNombreSaisi); 
+      this.caseNombreSaisi.addActionListener(this); 
       
       this.labelEtat = new JLabel(""); 
       panel.add(this.labelEtat); 
  
       // Initialiser le nombre à deviner. 
-      this.nombreMagique = initNombreMagique(); 
+      this.nombreMagique = choixNombreMagique();
       
-      this.tentatives = 0; 
+      this.tentative = 0; 
  
       // Modifie les propriétés de la fenêtre. 
       setTitle("Le Nombre Magique");
@@ -64,97 +68,73 @@ public class NombreMagique extends JFrame implements ActionListener
       setLocationRelativeTo(null);
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
    } 
- 
- 
+   
    //Vérification propositions joueur
    public void actionPerformed(ActionEvent actionEvent) 
    { 
-      // Convertir le nombre entré par l'utilisateur. 
+      // Convertion nombre saisi 
       try 
       { 
-         this.nombreSaisi = Integer.parseInt(this.fieldNombre.getText()); 
+         this.nombreSaisi = Integer.parseInt(this.caseNombreSaisi.getText()); 
          this.saisieValide = true; 
       } 
-      // Effectue un traitement particulier lorsque la valeur saisie n'est pas un entier. 
+      // Sila valeur saisie n'est pas un entier
       catch(NumberFormatException e) 
       { 
          this.saisieValide = false; 
       } 
  
-      // Vider le champ de la proposition de l'utilisateur. 
-      this.fieldNombre.setText(""); 
+      // Vide le champ de saisie 
+      this.caseNombreSaisi.setText(""); 
  
-      // Afficher un message d'état du jeu. 
+      // Affichage message
       afficherMessage(); 
-   } 
- 
- 
-   /** 
-    * <p>Initialiser le nombre à deviner.</p> 
-    * @return Le nombre à deviner. 
-    */ 
-   public int initNombreMagique() 
+   } 	
+
+	public void afficherMessage() 
    { 
-      return ((int) (Math.random()*limiteRand)); 
-   } 
- 
- 
-   /** 
-    * <p>Détermine si l'utilisateur a trouvé le nombre et affiche le message adéquat dans la barre 
-    * d'état.</p> 
-    */ 
-   public void afficherMessage() 
-   { 
+		while(this.nombreSaisi != this.nombreMagique && this.tentative != tentativesMax) {
+			
       if(!this.saisieValide) 
       { 
          this.labelEtat.setText("La valeur saisie n'est pas un nombre."); 
       } 
-      else if(this.nombreSaisi == this.nombreMagique) 
+      else 
+      {
+    	  if(this.nombreSaisi < this.nombreMagique) 
+    	   	{ 
+    	        	 this.tentative = this.tentative + 1; 
+    	            this.labelEtat.setText("Trop petit. " + "Il vous reste " + tentativesRest + " tentatives. " + "Essayez encore."); 
+    	            
+    	         } 
+    	         else 
+    	         { 
+    	        	 this.tentative = this.tentative + 1;
+    	            this.labelEtat.setText("Trop grand. " + "Il vous reste " + tentativesRest + " tentatives. " + "Essayez encore."); 
+    	            
+    	         } 
+    	  }
+		}
+    			  
+    	  if(this.nombreSaisi == this.nombreMagique || (this.nombreSaisi == this.nombreMagique && this.tentative == tentativesMax)) 
       { 
-         String commentaire; 
+         // Affichage du résultat. 
+         this.labelEtat.setText("Félicitation vous avez trouvé. Le nombre magique était " + nombreMagique + " et vous l'avez trouver en " +this.tentative + " tentatives. Vous pouvez recommencer."); 
  
-         // Afficher un message de félicitation dans la barre d'état. 
-         this.labelEtat.setText("Félicitation vous avez trouvé. Le nombre magique était " + nombreMagique + ". " + "Vous pouvez recommencer."); 
- 
-         // Déterminer le commentaire à afficher. 
-         if(this.tentatives == 10) 
-         { 
-            commentaire = "D'accord, vous connaissez le secret!"; 
-         } 
-         else if(this.tentatives < 10) 
-         { 
-            commentaire = "Soit vous connaissez le secret, soit vous êtes chanceux!"; 
-         } 
-         else 
-         { 
-            commentaire = "Vous pouvez certainement faire mieux!"; 
-         } 
- 
-         // Afficher la phrase aléatoire. 
-         JOptionPane.showMessageDialog(null, commentaire, "Commmentaire", 
-               JOptionPane.INFORMATION_MESSAGE); 
- 
-         // Réinitialiser le nombre à deviner et le nombre d'essais. 
-         this.nombreMagique = initNombreMagique(); 
+         // Réinitialisation du nombre magique et le nombre d'essais. 
+         this.nombreMagique = choixNombreMagique(); 
          
       } 
-      // Afficher une aide pour trouver le nombre et incrémenter le nombre d'essais. 
-      else 
-      { 
-         if(this.nombreSaisi < this.nombreMagique) 
-         { 
-        	 this.tentatives++; 
-            this.labelEtat.setText("Trop petit. " + "Il vous reste " + tentativesRest + " tentatives. " + "Essayez encore."); 
-            
-         } 
-         else 
-         { 
-        	 this.tentatives = this.tentatives + 1;
-            this.labelEtat.setText("Trop grand. " + "Il vous reste " + tentativesRest + " tentatives. " + "Essayez encore."); 
-            
-         } 
-      } 
-   } 
+    	  else if(this.tentative == tentativesMax) 
+    	 {
+    	// Afficher du résultat. 
+          this.labelEtat.setText("Dommage. Vous n'avez pas trouver le nombre magique qui était " + this.nombreMagique + ". Vous pouvez recommencer."); 
+  
+          // Réinitialisation du nombre magique et le nombre d'essais. 
+          this.nombreMagique = choixNombreMagique();
+    	 }
+      }
+   
  
  
    public static void main(String[] args) 
