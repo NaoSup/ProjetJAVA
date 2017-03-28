@@ -45,7 +45,7 @@ public class NombreMagique extends JFrame implements ActionListener
       panel.setBackground(Color.white);
       
       // Créer l'étiquette et le champ texte du nombre à deviner. 
-      this.regle = new JLabel("Devinez le nombre qui est compris entre 0 et " + this.limiteJeu + ". " + "Pour cela, vous avez droit à " + this.tentativesMax + " tentatives."); 
+      this.regle = new JLabel("Devinez le nombre qui est compris entre 0 et " + this.limiteJeu + "."); 
       panel.add(this.regle); 
       
       this.caseNombreSaisi = new JTextField(4); 
@@ -55,6 +55,7 @@ public class NombreMagique extends JFrame implements ActionListener
       
       this.labelEtat = new JLabel(""); 
       panel.add(this.labelEtat); 
+
  
       // Initialiser le nombre à deviner. 
       this.nombreMagique = choixNombreMagique();
@@ -63,7 +64,7 @@ public class NombreMagique extends JFrame implements ActionListener
  
       // Modifie les propriétés de la fenêtre. 
       setTitle("Le Nombre Magique");
-      setSize(550, 200);
+      setSize(500, 150);
       setResizable(false); 
       setLocationRelativeTo(null);
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
@@ -93,7 +94,6 @@ public class NombreMagique extends JFrame implements ActionListener
 
 	public void afficherMessage() 
    { 
-		while(this.nombreSaisi != this.nombreMagique && this.tentative != tentativesMax) {
 			
       if(!this.saisieValide) 
       { 
@@ -104,19 +104,19 @@ public class NombreMagique extends JFrame implements ActionListener
     	  if(this.nombreSaisi < this.nombreMagique) 
     	   	{ 
     	        	 this.tentative = this.tentative + 1; 
-    	            this.labelEtat.setText("Trop petit. " + "Il vous reste " + tentativesRest + " tentatives. " + "Essayez encore."); 
-    	            
+    	            this.labelEtat.setText("Trop petit. Essayez encore."); 
+
     	         } 
     	         else 
     	         { 
     	        	 this.tentative = this.tentative + 1;
-    	            this.labelEtat.setText("Trop grand. " + "Il vous reste " + tentativesRest + " tentatives. " + "Essayez encore."); 
+    	            this.labelEtat.setText("Trop grand. Essayez encore."); 
     	            
     	         } 
     	  }
-		}
+		//}
     			  
-    	  if(this.nombreSaisi == this.nombreMagique || (this.nombreSaisi == this.nombreMagique && this.tentative == tentativesMax)) 
+    	  if(this.nombreSaisi == this.nombreMagique) 
       { 
          // Affichage du résultat. 
          this.labelEtat.setText("Félicitation vous avez trouvé. Le nombre magique était " + nombreMagique + " et vous l'avez trouver en " +this.tentative + " tentatives. Vous pouvez recommencer."); 
