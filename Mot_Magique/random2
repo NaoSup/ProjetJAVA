@@ -1,0 +1,76 @@
+package impact;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class test4 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		
+		 
+		String motMagique = "SeSaMe" ;
+        Random rnd = new Random() ; 
+        Scanner clavier = new Scanner (System.in); 
+        String motclee[] = {"SeSaMe" , "MeSaMe", "easy" , " kita", "amy"};
+        
+ 
+        
+		char tab [] ={ 'S' , 'M' , 'S' , 'a' , 'e' ,'a'} ;
+		char tab2 [] ={'q' , 's' , 'x' , 'w', 'k' , 'i'};
+		
+		
+		 int position = (int) (Math.random() * tab.length );
+	     System.out.println("" + tab[position]);
+	     
+	     int position2 = (int) (Math.random() * tab.length );
+	     System.out.println(" " + tab[position2]);
+	     
+	     
+	     int position3 = (int) (Math.random() * tab.length );
+	     System.out.println("" + tab[position3]);
+	     
+	     int position4 = (int) (Math.random() * tab.length );
+	     System.out.println(" " + tab[position4]);
+	     
+	     int position5 = (int) (Math.random() * tab.length );
+	     System.out.println(" " + tab[position5]);
+	     
+	     
+	     int position6 = (int) (Math.random() * tab.length );
+	     System.out.println(""  + tab[position6]);
+		
+		
+		 System.out.println("Quel est le mot magique parmi ces lettres ");
+		   motclee[0] = clavier.nextLine();
+		   System.out.println("Vous préfèrez d'être appelé Madame plutôt que Mademoiselle ? (o oui n)");
+			String preference = clavier.nextLine();
+		   
+		   System.out.println("Quel est le mot magique parmi ces lettres ");
+		   motclee[1] = clavier.nextLine();
+         boolean found = false ;
+		   for(String element : motclee )
+			   if(preference.equals("oui") || preference.equals("Oui") || preference.equals("OUI")){
+		   if(element.equals(motclee)){
+			   found = true ;
+			  
+			  return  ;
+		   }
+		   
+		   if (found) {
+			    System.out.println( "The array contains the string: " + motclee[0] );
+		   }
+			   else if (found){
+				    System.out.println( "The array contains the string: " + motclee[1] );
+			    
+			} else {
+			    System.out.println( "The array does not contains the string ");
+			}
+			
+		   
+			   }
+		   		
+	}
+
+}
