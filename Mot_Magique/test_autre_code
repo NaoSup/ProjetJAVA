@@ -9,21 +9,26 @@ import java.util.Random;
 public class remain{
     public static void main(String[] args) {
         String []tabMot = {"ALLO", "BONJOUR","MANGER","BOIRE"};
+        Random rand = new Random();
+        int nombreAleatoire;
         String mot;
-        //nombrealeatoire = rand.nextInt(tabMot.length);
-        //mot = tabMot[nombrealeatoire];
+        
+        nombreAleatoire = rand.nextInt(tabMot.length);
+        mot = tabMot[nombreAleatoire];
+        
         String motVeritable; // = mot de base
         String lettre = "AZERTYUIOPQSDFGHJKLMWXCVBN";
-        Random rand = new Random();
+        
         int max;
         int stop = 0;
         int min = 0;
-        int ajoudelettre = 4;
-        int nombreAleatoire;
+        int ajoutdelettre = 4;
         
-        for (int i=0; i < ajoudelettre; i++){
+        
+        
+        for (int i=0; i < ajoutdelettre; i++){
             nombreAleatoire = rand.nextInt(27);
-            mot = lettre.charAt(nombreAleatoire);
+            mot += lettre.charAt(nombreAleatoire);
         }
         ArrayList<Integer> lettreprise = new ArrayList<>();
         boolean co = true;
