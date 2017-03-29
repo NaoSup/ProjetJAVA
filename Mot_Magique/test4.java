@@ -76,7 +76,7 @@ public class test4 {
 		     int position40 = (int) (Math.random() * tab2.length );
 		     int position41 = (int) (Math.random() * tab2.length );
 		     System.out.println("voila les lettres que nous vous proposons  : " + tab[position29]+ " "  + tab[position42] +" "+ tab[position30] +" "+ tab[position31] +" "+ tab[position32]+ " " + tab[position33]+ " " + tab[position34]+" "+ tab2[position35] + " " + tab2[position36]+ " " + tab2[position37]+ " "+tab2[position38]+ " " + tab2[position39] +" "+ tab2[position40] + " " +tab2[position41]) ;
-		
+			
 		   
 		   System.out.println("Quel est le troisiéme mot magique parmi ces lettres ");
 		   motclee[3] = clavier.nextLine();
@@ -102,6 +102,7 @@ public class test4 {
 		   
 		   
 		   System.out.println("Quel est le mot quatriéme magique parmi ces lettres ");
+		   System.out.println("elle contiendra 6 lettre");
 		   motclee[4] = clavier.nextLine();
 		   
          boolean found = false ;
