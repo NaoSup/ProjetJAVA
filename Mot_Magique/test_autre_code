@@ -2,8 +2,8 @@ package motmagique2;
 
 
 import java.util.ArrayList;
-
 import java.util.Random;
+import java.util.Scanner;
 
 
 public class remain{
@@ -13,10 +13,10 @@ public class remain{
         int nombreAleatoire;
         String mot;
         
+        
         nombreAleatoire = rand.nextInt(tabMot.length);
         mot = tabMot[nombreAleatoire];
-        
-        String motVeritable; // = mot de base
+        String motMagique; // = mot de base
         String lettre = "AZERTYUIOPQSDFGHJKLMWXCVBN";
         
         int max;
@@ -25,9 +25,10 @@ public class remain{
         int ajoutdelettre = 3;
         
         
+        System.out.println("Trouver le mot magique parmi cette liste de lettre" );
         
         for (int i=0; i < ajoutdelettre; i++){
-            nombreAleatoire = rand.nextInt(27);
+            nombreAleatoire = rand.nextInt(26);
             mot += lettre.charAt(nombreAleatoire);
         }
         ArrayList<Integer> lettreprise = new ArrayList<>();
@@ -41,9 +42,23 @@ public class remain{
             }
             if (stop == mot.length()){	
                 co = true;
+                
             }
         }
-        //tester le mot donnnÃ© par l'utilisateur = motVeritable
+        //tester la réponse de l'utilisateur = motMagique
+        Scanner reponse = new Scanner(System.in);
+        motMagique = reponse.nextLine();
+        boolean po = true;
+        while(po){
+      if (motMagique == mot){
+    	  po= false;
+    	  System.out.println("trouve");
+      } else{
+    	  
+    	  System.out.println("Essaie encore");
+      }
+        }  
+
     }
 }
 
