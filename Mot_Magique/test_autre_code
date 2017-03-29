@@ -50,20 +50,16 @@ public class remain{
         
 
         Scanner reponse = new Scanner(System.in);
-        motSaisi = reponse.nextLine();
-  
-       
-       while(motSaisi == motMagique) {
-    	  System.out.println("Essaie encore");
-     	  Scanner reponse2 = new Scanner(System.in);
-     	  motSaisi = reponse2.nextLine();
+       boolean po = true;
+       while(po){
+    	   motSaisi = reponse.nextLine();
+    	   if(!(motSaisi.toUpperCase().equals(motMagique)) ) {
+        	  System.out.println("Essaie encore");     	 
+           }else{
+        	   po = false;
+                System.out.println("Bien vu");
+                System.out.println("le mot magique est bien : " + motMagique);
+           }
+   
        }
-            System.out.println("Bien vu");
-            System.out.println("le mot magique est bien : " + motMagique);
-
-        }  
-        
-        //tester le mot donnnÃ© par l'utilisateur = motMagique
-    }
-
-
+  
