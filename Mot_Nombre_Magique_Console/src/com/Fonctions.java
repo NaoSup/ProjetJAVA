@@ -30,7 +30,6 @@ public class Fonctions {
 		
 		//nombre magique
 		if(this.jeu == 1) {
-			choixNombreMagique();
 			choixModeNombre();
 
 		}
@@ -99,18 +98,17 @@ public class Fonctions {
 	
 	//inclus nombreModeIllimite & nombreModeLimite
 	public void choixModeNombre() {
-		//énoncé de la règle du jeu
-		System.out.println("Vous devez trouver le nombre magique compris entre 0 et " + this.limiteJeu + ".");
-		
+	
 		//choix du mode de jeu
 		Scanner saisie = new Scanner(System.in);
 		System.out.println("Mode illimité : 1 / Mode limité : 2");
 		this.mode = saisie.nextInt();
 		if(this.mode == 1) {
+			choixNombreMagique();
 			nombreModeIllimite();
 		}
 		else if(this.mode == 2) {
-			nombreModeLimite();
+			niveaux();
 		}
 	}
 	
@@ -177,6 +175,10 @@ public class Fonctions {
 	
 	//inclus saisieNombre & verifLimiteJeu
 	public void nombreModeIllimite(){
+		
+		//énoncé de la règle du jeu
+		System.out.println("Vous devez trouver le nombre magique compris entre 0 et " + this.limiteJeu + ".");
+		
 		saisieNombre();
 		this.tentative = 1;
 		
@@ -192,6 +194,8 @@ public class Fonctions {
 	//inclus saisieNombre & verifLimiteJeu
 	public void nombreModeLimite() {
 		
+		//énoncé de la règle du jeu
+		System.out.println("Vous devez trouver le nombre magique compris entre 0 et " + this.limiteJeu + ".");
 		//énoncé de la règle du mode limité
 		System.out.println("\n" + "Vous avez droit à " + this.tentativesMax + " tentatives.");
 
@@ -226,13 +230,27 @@ public class Fonctions {
 		this.niveau = sc.nextInt();
 		
 		if(this.niveau == 1) {
-			this.limiteRand = 400;
+			this.limiteRand = 401;
 			this.tentativesMax = 12;
+			choixNombreMagique();
 			nombreModeLimite();
 		}
 		else if(this.niveau == 2) {
-			this.limiteRand = 400;
-			this.tentativesMax = 12;
+			this.limiteRand = 501;
+			this.tentativesMax = 10;
+			choixNombreMagique();
+			nombreModeLimite();
+		}
+		else if(this.niveau == 3) {
+			this.limiteRand = 1001;
+			this.tentativesMax = 10;
+			choixNombreMagique();
+			nombreModeLimite();
+		}
+		else if(this.niveau == 4) {
+			this.limiteRand = 2001;
+			this.tentativesMax = 10;
+			choixNombreMagique();
 			nombreModeLimite();
 		}
 	}
