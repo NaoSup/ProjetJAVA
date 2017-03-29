@@ -9,12 +9,11 @@ public class Fonctions {
 	int tentativesRestantes;
 	int tentativesMax = 10;
 	int limiteJeu;
-	int limiteRand;
+	int limiteRand=501;
 	int jeu;
 	int mode;
 	
-	public void choixNombreMagique(int limiteRand) {
-		this.limiteRand = limiteRand;
+	public void choixNombreMagique() {
 		this.limiteJeu = this.limiteRand - 1;
 		this.nombreMagique = (int) (Math.random()*limiteRand);
 	}
@@ -26,7 +25,7 @@ public class Fonctions {
 		this.jeu = saisie.nextInt();
 		
 		if(this.jeu == 1) {
-			choixNombreMagique(501);
+			choixNombreMagique();
 			choixModeNombre();
 
 		}
@@ -59,17 +58,11 @@ public class Fonctions {
 	
 	//inclus verifNombreSaisi
 	public void verifLimiteJeu() {
-		//Vérification nombre saisi compris dans les limites du random
-		if (this.nombreSaisi > limiteJeu) {
+		//Verification nombre saisi compris dans les limites du random
+		if (this.nombreSaisi > limiteJeu || this.nombreSaisi < 0) {
 			Scanner saisie2 = new Scanner(System.in);
 			System.out.println("\n" + "Veuillez saisir un nombre COMPRIS entre 0 et " + limiteJeu + " :");
 			this.nombreSaisi = saisie2.nextInt();
-		}
-			
-		else if (this.nombreSaisi < 0) {
-			Scanner saisie3 = new Scanner(System.in);
-			System.out.println("\n" + "Veuillez saisir un nombre COMPRIS entre 0 et " + limiteJeu + " :");
-			this.nombreSaisi = saisie3.nextInt();
 		}
 		else {
 			verifNombreSaisi();
@@ -93,12 +86,7 @@ public class Fonctions {
 			System.out.println("\n" + "Veuillez saisir un nouveau nombre :");
 			this.nombreSaisi = sc.nextInt();
 			
-			this.tentative = this.tentative+1;
-			
-			//this.tentativesRestantes = tentativesMax - this.tentative;
-			//System.out.println("\n" + "Il vous reste " + this.tentativesRestantes + " tentative(s).");
-			
-			
+			this.tentative = this.tentative+1;	
 		}
 			
 		//si nombre saisi plus petit que nombre magique
@@ -158,6 +146,10 @@ public class Fonctions {
 			System.out.println("Le nombre magique était " + this.nombreMagique); //affichage nombre magique
 			System.out.println("Nombre de tentatives : " + this.tentative); //affichage nombre tentative
 		}	
+	}
+	
+	public void niveaux() {
+		
 	}
 }
 
