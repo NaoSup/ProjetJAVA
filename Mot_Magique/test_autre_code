@@ -22,7 +22,7 @@ public class remain{
         int max;
         int stop = 0;
         int min = 0;
-        int ajoutdelettre = 4;
+        int ajoutdelettre = 3;
         
         
         
@@ -39,10 +39,11 @@ public class remain{
                 System.out.println(mot.charAt(nombreAleatoire));
                 stop++;
             }
-            if (stop == mot.length()){
+            if (stop == mot.length()){	
                 co = true;
             }
         }
         //tester le mot donnnÃ© par l'utilisateur = motVeritable
     }
 }
+
