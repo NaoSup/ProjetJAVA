@@ -1,5 +1,7 @@
 package com;
 
+import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Fonctions {
@@ -9,9 +11,10 @@ public class Fonctions {
 	int tentativesRestantes;
 	int tentativesMax = 10;
 	int limiteJeu;
-	int limiteRand=501;
+	int limiteRand=1001;
 	int jeu;
 	int mode;
+	int niveau;
 	
 	public void choixNombreMagique() {
 		this.limiteJeu = this.limiteRand - 1; //limite du jeu affichée au joueur
@@ -34,8 +37,64 @@ public class Fonctions {
 		
 		//mot magique
 		else if(this.jeu == 2) {
-			System.out.println("JEU EN CONSTRUCTION");
+			motMagique();  
 		}
+	}
+	
+	public void motMagique() {
+		String []tabMot = {"ALLO", "BONJOUR","MANGER","BOIRE"};
+        Random rand = new Random();
+        int nombreAleatoire;
+        String motMagique;
+        
+        
+        nombreAleatoire = rand.nextInt(tabMot.length);
+        motMagique = tabMot[nombreAleatoire];
+
+        String motSaisi; // = mot de base
+        String lettre = "AZERTYUIOPQSDFGHJKLMWXCVBN";
+        
+        int max;
+        int stop = 0;
+        int min = 0;
+        int ajoutdelettre = 3;
+        String lettresMysteres = motMagique;
+        
+        
+        System.out.println("Voici une liste de lettres" );
+        
+        for (int i=0; i < ajoutdelettre; i++){
+            nombreAleatoire = rand.nextInt(26);
+            lettresMysteres += lettre.charAt(nombreAleatoire);
+        }
+        ArrayList<Integer> lettreprise = new ArrayList<>();
+        boolean co = true;
+        while (co){
+            nombreAleatoire = rand.nextInt(lettresMysteres.length());
+            if (!(lettreprise.contains(nombreAleatoire))){
+                lettreprise.add(nombreAleatoire);
+                System.out.println(lettresMysteres.charAt(nombreAleatoire));
+                stop++;
+            }
+            if (stop == lettresMysteres.length()){	
+                co = false;
+          
+            }
+        }
+        
+
+        Scanner reponse = new Scanner(System.in);
+       boolean po = true;
+       while(po){
+    	   motSaisi = reponse.nextLine();
+    	   if(!(motSaisi.toUpperCase().equals(motMagique)) ) {
+        	  System.out.println("Essaie encore");     	 
+           }else{
+        	   po = false;
+                System.out.println("Bien vu");
+                System.out.println("le mot magique est bien : " + motMagique);
+           }
+       }
 	}
 	
 	//inclus nombreModeIllimite & nombreModeLimite
@@ -132,6 +191,7 @@ public class Fonctions {
 	
 	//inclus saisieNombre & verifLimiteJeu
 	public void nombreModeLimite() {
+		
 		//énoncé de la règle du mode limité
 		System.out.println("\n" + "Vous avez droit à " + this.tentativesMax + " tentatives.");
 
@@ -160,7 +220,21 @@ public class Fonctions {
 	}
 	
 	public void niveaux() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Veuillez choisir un niveau : ");
+		System.out.println("Très Facile: 1  Facile: 2  Moyen: 3  Difficile: 4");
+		this.niveau = sc.nextInt();
 		
+		if(this.niveau == 1) {
+			this.limiteRand = 400;
+			this.tentativesMax = 12;
+			nombreModeLimite();
+		}
+		else if(this.niveau == 2) {
+			this.limiteRand = 400;
+			this.tentativesMax = 12;
+			nombreModeLimite();
+		}
 	}
 }
 
