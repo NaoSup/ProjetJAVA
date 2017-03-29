@@ -22,33 +22,62 @@ public class test4 {
 		
 		
 		 int position = (int) (Math.random() * tab.length );
-	     System.out.println("" + tab[position]);
-	     
 	     int position2 = (int) (Math.random() * tab.length );
-	     System.out.println(" " + tab[position2]);
-	     
-	     
 	     int position3 = (int) (Math.random() * tab.length );
-	     System.out.println("" + tab[position3]);
+	     
 	     
 	     int position4 = (int) (Math.random() * tab.length );
-	     System.out.println(" " + tab[position4]);
+	    
 	     
 	     int position5 = (int) (Math.random() * tab.length );
-	     System.out.println(" " + tab[position5]);
+	     
 	     
 	     
 	     int position6 = (int) (Math.random() * tab.length );
-	     System.out.println(""  + tab[position6]);
+	     
+	     
+	     int position7 = (int) (Math.random() * tab2.length );
+	  
+	     
+	     int position8 = (int) (Math.random() * tab2.length );
+	     
+	     int position9 = (int) (Math.random() * tab2.length );
+	     
+	     
+	     int position10 = (int) (Math.random() * tab2.length );
+	    
+	     
+	     int position11 = (int) (Math.random() * tab2.length );
+	     
+	     
+	     
+	     int position12 = (int) (Math.random() * tab2.length );
+	     
+	     
+	     
+	     int position13 = (int) (Math.random() * tab2.length );
+	    
+	     
+	     int position14 = (int) (Math.random() * tab2.length );
+	     System.out.println("voila les lettres que nous vous proposons  : " + tab[position]+ " "  + tab[position2] +" "+ tab[position3] +" "+ tab[position4] +" "+ tab[position5]+ " " + tab[position6]+ " " + tab[position7]+" "+ tab2[position8] + " " + tab2[position9]+ " " + tab2[position10]+ " "+tab2[position11]+ " " + tab2[position12] +" "+ tab2[position13] + " " +tab2[position14]);
 		
 		
-		 System.out.println("Quel est le mot magique parmi ces lettres ");
+		 System.out.println("Quel est le premier mot magique parmi ces lettres ");
 		   motclee[0] = clavier.nextLine();
 		   System.out.println("Vous préfèrez d'être appelé Madame plutôt que Mademoiselle ? (o oui n)");
 			String preference = clavier.nextLine();
 		   
-		   System.out.println("Quel est le mot magique parmi ces lettres ");
+		   System.out.println("Quel est le deuxiéme mot magique parmi ces lettres ");
 		   motclee[1] = clavier.nextLine();
+		   
+		   
+		   System.out.println("Quel est le troisiéme mot magique parmi ces lettres ");
+		   motclee[3] = clavier.nextLine();
+		   
+		   
+		   System.out.println("Quel est le mot quatriéme magique parmi ces lettres ");
+		   motclee[4] = clavier.nextLine();
+		   
          boolean found = false ;
 		   for(String element : motclee )
 			   if(preference.equals("oui") || preference.equals("Oui") || preference.equals("OUI")){
@@ -59,13 +88,30 @@ public class test4 {
 		   }
 		   
 		   if (found) {
-			    System.out.println( "The array contains the string: " + motclee[0] );
+			    System.out.println( "vous avez trouvez le bon mot magique: " + motclee[0] );
 		   }
 			   else if (found){
-				    System.out.println( "The array contains the string: " + motclee[1] );
+				    System.out.println( "vous avez trouvez le bon mot magique: " + motclee[1] );
 			    
-			} else {
-			    System.out.println( "The array does not contains the string ");
+			}
+			   
+			   else if (found){
+				    System.out.println( "vous avez trouvez le bon mot magique: " + motclee[2] );
+			    
+			   }
+		   
+			   else if (found){
+				    System.out.println( "vous avez trouvez le bon mot magique : " + motclee[3] );
+			   }
+			   else if (found){
+				    System.out.println( "vous avez trouvez le bon mot magique: " + motclee[4] );
+			    
+			   }
+		   
+			   
+			   else {
+			    System.out.println( " vous n'avez pas mi le bon mot magique");
+			    break;
 			}
 			
 		   
@@ -74,3 +120,4 @@ public class test4 {
 	}
 
 }
+
