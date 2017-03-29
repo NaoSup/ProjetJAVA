@@ -17,7 +17,7 @@ public class Fonctions {
 	int niveau;
 	
 	public void choixNombreMagique() {
-		this.limiteJeu = this.limiteRand - 1; //limite du jeu affich√©e au joueur
+		this.limiteJeu = this.limiteRand - 1; //limite du jeu affichÈe au joueur
 		this.nombreMagique = (int) (Math.random()*limiteRand); //calcul du nombre magique
 	}
 	
@@ -99,7 +99,7 @@ public class Fonctions {
 	
 		//choix du mode de jeu
 		Scanner saisie = new Scanner(System.in);
-		System.out.println("Mode illimit√© : 1 / Mode limit√© : 2");
+		System.out.println("Mode illimitÈ : 1 / Mode limitÈ : 2");
 		this.mode = saisie.nextInt();
 		if(this.mode == 1) {
 			choixNombreMagique();
@@ -136,7 +136,7 @@ public class Fonctions {
 			//affichage "plus petit"
 			System.out.println("\n" + "Plus petit.");
 			
-			//si dans le mode limit√© on affiche les tentatives restantes
+			//si dans le mode limitÈ on affiche les tentatives restantes
 			if(this.mode == 2) {
 				this.tentativesRestantes = tentativesMax - this.tentative;
 				System.out.println("Il vous reste " + this.tentativesRestantes + " tentative(s).");
@@ -156,7 +156,7 @@ public class Fonctions {
 			//affichage "plus grand"
 			System.out.println("\n" + "Plus grand.");
 			
-			//si dans le mode limit√© on affiche les tentatives restantes
+			//si dans le mode limitÈ on affiche les tentatives restantes
 			if(this.mode == 2) {
 				this.tentativesRestantes = tentativesMax - this.tentative;
 				System.out.println("Il vous reste " + this.tentativesRestantes + " tentative(s).");
@@ -174,7 +174,7 @@ public class Fonctions {
 	//inclus saisieNombre & verifLimiteJeu
 	public void nombreModeIllimite(){
 		
-		//√©nonc√© de la r√®gle du jeu
+		//EnoncÈ de la rËgle du jeu
 		System.out.println("Vous devez trouver le nombre magique compris entre 0 et " + this.limiteJeu + ".");
 		
 		saisieNombre();
@@ -192,31 +192,31 @@ public class Fonctions {
 	//inclus saisieNombre & verifLimiteJeu
 	public void nombreModeLimite() {
 		
-		//√©nonc√© de la r√®gle du jeu
+		//√©nonc√© de la rËgle du jeu
 		System.out.println("Vous devez trouver le nombre magique compris entre 0 et " + this.limiteJeu + ".");
-		//√©nonc√© de la r√®gle du mode limit√©
-		System.out.println("\n" + "Vous avez droit √† " + this.tentativesMax + " tentatives.");
+		//√©nonc√© de la rËgle du mode limitÈ
+		System.out.println("\n" + "Vous avez droit ‡† " + this.tentativesMax + " tentatives.");
 
 		saisieNombre();
 		this.tentative = 1;
 		
-		//on v√©rifie le nombre saisi et le nombre de tentatives du joueur
+		//on vÈrifie le nombre saisi et le nombre de tentatives du joueur
 		while (this.nombreSaisi != this.nombreMagique && this.tentative != this.tentativesMax) {
 			verifLimiteJeu();
 		}
 		
-		//si le nombre magique est trouv√©
+		//si le nombre magique est trouvÈ
 		if (this.nombreSaisi == this.nombreMagique || (this.nombreSaisi == this.nombreMagique && this.tentative == this.tentativesMax)) {
-			//affichage du r√©sultat 
+			//affichage du rÈsultat 
 			System.out.println("\n" + "GAGNE :)");
 			System.out.println("Le nombre magique est " + this.nombreMagique); //affichage nombre magique
 			System.out.println("Nombre de tentatives : " + this.tentative); //affichage nombre tentative
 		}
 		
-		//si le nombre magique n'est pas trouv√©
+		//si le nombre magique n'est pas trouvÈ
 		else if (this.tentative == tentativesMax){
 			System.out.println("\n" + "PERDU :(");
-			System.out.println("Le nombre magique √©tait " + this.nombreMagique); //affichage nombre magique
+			System.out.println("Le nombre magique Ètait " + this.nombreMagique); //affichage nombre magique
 			System.out.println("Nombre de tentatives : " + this.tentative); //affichage nombre tentative
 		}	
 	}
@@ -225,7 +225,7 @@ public class Fonctions {
 	public void niveaux() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Veuillez choisir un niveau : ");
-		System.out.println("Tr√®s Facile: 1  Facile: 2  Moyen: 3  Difficile: 4");
+		System.out.println("TrËs Facile: 1  Facile: 2  Moyen: 3  Difficile: 4");
 		this.niveau = sc.nextInt();
 		
 		if(this.niveau == 1) {
